@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="content">
+        <form action="." method="post" data-url="{{ list_url }}">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card card-default">
+                            <div class="card-header">
+                                <h3 class="card-title">
+                                    <i class="fas fa-search"></i>
+                                    {{ title }}
+                                </h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <input type="hidden" name="action" value="{{ action }}">
+                                Se eliminar el registro {{ object }} de forma permanente, lo cual no podra ser recuperado.
+                            </div>
+                            <!-- /.card-body -->
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-success btn-sm" href='{{ create_url }}'><i class="fas fa-trash"> Eliminar</i></button>
+                                <a class="btn btn-danger btn-sm" href='.'><i class="fas fa-ban"> cancelar</i></a>
+                            </div>
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                </div>
+                <!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </form>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    <script src="{% static 'js/form.js' %}"></script>
+{% endblock %}

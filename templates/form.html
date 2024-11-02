@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+
+{% block content %}
+    <div class="content">
+        <div class="container">
+            <form action="." method="post" data-url="{{ list_url }}">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card card-default">
+                            <div class="card-header">
+                                <h3 class="card-title">
+                                    <i class="fas fa-plus"></i>
+                                    {{ title }}
+                                </h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <input type="hidden" name="action" value="{{ action }}">
+                                {% for field in form %}
+                                    <div class="form-group">
+                                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                                        {{ field|add_class:'form-control' }}
+                                        {% if field.help_text %}
+                                            <small class="form-text text-muted">{{ field.help_text }}</small>
+                                        {% endif %}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <!-- /.card-body -->
+                            <div class="card-footer">
+                                <button class="btn btn-success btn-sm" type="submit" id="btnEnviar"><i class="fas fa-save"> Agregar</i></button>
+                                <a class="btn btn-danger btn-sm" href='{{ list_url }}'><i class="fas fa-ban"> Cancelar</i></a>
+                            </div>
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                </div>
+            </form>
+            <!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    <script src="{% static 'js/form.js' %}"></script>
+{% endblock %}
